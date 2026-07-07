@@ -1,0 +1,384 @@
+/* ============================================
+   CareerForge AI - App.css
+   Bold & Modern / Glassmorphism Theme
+   ============================================ */
+
+/* ---------- Root Variables ---------- */
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --accent-primary: #7c3aed;
+  --accent-secondary: #06b6d4;
+  --accent-success: #22c55e;
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 40px rgba(124, 58, 237, 0.25);
+
+  --transition: all 0.25s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ambient glow blobs behind content */
+body::before {
+  content: "";
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.App {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff, var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+p, span, li {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+}
+
+.navbar a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.navbar a:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* ---------- Glass Card (core reusable component) ---------- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+}
+
+/* Smaller card variant, e.g. for list items */
+.glass-card-sm {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.glass-card-sm:hover {
+  border-color: var(--glass-border-hover);
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 12px 28px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg);
+  border-color: var(--glass-border-hover);
+}
+
+/* ---------- File Upload Box ---------- */
+.upload-box {
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-box:hover,
+.upload-box.dragover {
+  border-color: var(--accent-secondary);
+  background: rgba(6, 182, 212, 0.08);
+}
+
+.upload-box .file-name {
+  margin-top: 1rem;
+  color: var(--accent-secondary);
+  font-weight: 500;
+}
+
+/* ---------- Score Badges (Resume Score / ATS Score) ---------- */
+.score-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent-primary) 0%, var(--accent-secondary) var(--score-percent, 88%), rgba(255,255,255,0.08) var(--score-percent, 88%));
+  position: relative;
+}
+
+.score-badge::before {
+  content: "";
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #1a1730;
+}
+
+.score-badge .score-value {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.score-badge .score-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Analysis Sections ---------- */
+.analysis-section {
+  margin-bottom: 1.5rem;
+}
+
+.analysis-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.analysis-list {
+  list-style: none;
+}
+
+.analysis-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.analysis-list.strengths li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-success);
+  font-weight: 700;
+}
+
+.analysis-list.weaknesses li::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  color: var(--accent-danger);
+  font-weight: 700;
+}
+
+.analysis-list.suggestions li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-secondary);
+  font-weight: 700;
+}
+
+/* ---------- Badges / Tags (Missing Skills, etc.) ---------- */
+.tag {
+  display: inline-block;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #c4b5fd;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin: 0.25rem;
+}
+
+/* ---------- Loading / Spinner ---------- */
+.spinner {
+  border: 3px solid var(--glass-border);
+  border-top: 3px solid var(--accent-secondary);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 0.8s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Error / Success Messages ---------- */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-top: 1rem;
+}
+
+.success-message {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-top: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  h1 { font-size: 1.9rem; }
+  .glass-card { padding: 1.25rem; }
+  .App { padding: 1.5rem 1rem; }
+}
