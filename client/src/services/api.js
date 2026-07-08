@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5050/api",
+  baseURL: "https://careerforge-ai-2-clz9.onrender.com/api",
 });
 
 export default api;
