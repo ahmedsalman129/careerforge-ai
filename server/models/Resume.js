@@ -7,22 +7,10 @@ const resumeSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
     originalName: {
       type: String,
       required: true,
     },
-
-    fileName: {
-      type: String,
-      required: true,
-    },
-
-    filePath: {
-      type: String,
-      required: true,
-    },
-
     analysis: {
       type: Object,
       default: {},
@@ -34,5 +22,4 @@ const resumeSchema = new mongoose.Schema(
 );
 
 const Resume = mongoose.model("Resume", resumeSchema);
-
 module.exports = Resume;

@@ -1,5 +1,4 @@
 const Resume = require("../models/Resume");
-const fs = require("fs");
 const pdfParse = require("pdf-parse");
 const analyzeResume = require("../services/geminiService");
 
@@ -12,8 +11,8 @@ const uploadResume = async (req, res) => {
       });
     }
 
-    // Read uploaded PDF
-    const pdfBuffer = fs.readFileSync(req.file.path);
+    // Read uploaded PDF from memory buffer
+    const pdfBuffer = req.file.buffer;
 
     // Extract text from PDF
     const pdfData = await pdfParse(pdfBuffer);
@@ -31,8 +30,6 @@ const uploadResume = async (req, res) => {
     const resume = new Resume({
       userId: req.user.userId,
       originalName: req.file.originalname,
-      fileName: req.file.filename,
-      filePath: req.file.path,
       analysis,
     });
 
